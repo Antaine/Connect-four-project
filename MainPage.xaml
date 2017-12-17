@@ -86,38 +86,293 @@
             <!-- End of colls-->
 
 
-            <Ellipse Fill="Red"
-                     Grid.Column="1"/>
-            <!--  MouseEnter="Ellipse_MouseEnter"
-                     MouseLeave="Ellipse_MouseLeave"/>
-                    -->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked1"
+                     />
 
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="3"
                      Stroke="Black"
-                     StrokeThickness="3"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked2"
                      />
 
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="5"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked3"
                      />
 
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="7"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked4"
                      />
 
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="9"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked"
                      />
 
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="11"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked"
                      />
-            <Ellipse Fill="Red"
+            <Ellipse Fill="White"
                      Grid.Column="13"
+                      Stroke="Black"
+                     StrokeThickness="1"
+                     PointerEntered="PointrIn" PointerExited="PointrOut"
+                     PointerPressed="Clicked"
                      />
-            <!--           MouseEnter="Ellipse_MouseEnter"
-                     MouseLeave="Ellipse_MouseLeave"/> -->
+            <!--Row 1-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     Name="C2R2"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="2"
+                      Name="C3R2"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="2"
+                      Name="C5R2"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="2"
+                      Name="C7R2"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="2"
+                     Name="C9R2"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="2"
+                      Name="C11R2"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="2"
+                      Name="C13R2"
+                     />
+
+            <!--Row 2-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="4"
+                      Name="C1R4"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="4"
+                     Name="C3R4"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="4"
+                     Name="C5R4"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="4"
+                     Name="C7R4"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="4"
+                     Name="C9R4"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="4"
+                     Name="C11R4"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="4"
+                     Name="C13R4"
+                     />
+
+            <!--Row 3-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="6"
+                     Name="C1R6"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="6"
+                     Name="C3R6"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="6"
+                     Name="C5R6"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="6"
+                     Name="C7R6"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="6"
+                     Name="C9R6"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="6"
+                     Name="C11R6"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="6"
+                     Name="C13R6"
+                     />
+
+            <!--Row 4-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="8"
+                     Name="C1R8"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="8"
+                      Name="C3R8"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="8"
+                      Name="C5R8"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="8"
+                      Name="C7R8"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="8"
+                      Name="C9R8"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="8"
+                      Name="C11R8"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="8"
+                      Name="C13R8"
+                     />
+
+            <!--Row 5-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="10"
+                      Name="C1R10"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="10"
+                     Name="C3R10"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="10"
+                     Name="C5R10"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="10"
+                     Name="C7R10"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="10"
+                     Name="C9R10"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="10"
+                     Name="C11R10"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="10"
+                     Name="C13R10"
+                     />
+
+            <!--Row 6-->
+            <Ellipse Fill="White"
+                     Grid.Column="1"
+                     Grid.Row="12"
+                     Name="C1R12"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="3"
+                     Grid.Row="12"
+                     Name="C3R12"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="5"
+                     Grid.Row="12"
+                     Name="C5R12"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="7"
+                     Grid.Row="12"
+                     Name="C7R12"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="9"
+                     Grid.Row="12"
+                     Name="C9R12"
+                     />
+            <Ellipse Fill="White"
+                     Grid.Column="11"
+                     Grid.Row="12"
+                     Name="C11R12"
+                     />
+
+            <Ellipse Fill="White"
+                     Grid.Column="13"
+                     Grid.Row="12"
+                     Name="C13R12"
+                     />
 
         </Grid><!--Board grid -->
     </Grid>
