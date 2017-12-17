@@ -92,6 +92,7 @@
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
                      PointerPressed="Clicked1"
+                     Name="enterPiece1"
                      />
 
             <Ellipse Fill="White"
@@ -100,6 +101,7 @@
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
                      PointerPressed="Clicked2"
+                     Name="enterPiece2"
                      />
 
             <Ellipse Fill="White"
@@ -108,6 +110,7 @@
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
                      PointerPressed="Clicked3"
+                     Name="enterPiece3"
                      />
 
             <Ellipse Fill="White"
@@ -116,6 +119,7 @@
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
                      PointerPressed="Clicked4"
+                     Name="enterPiece4"
                      />
 
             <Ellipse Fill="White"
@@ -123,7 +127,8 @@
                       Stroke="Black"
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
-                     PointerPressed="Clicked"
+                     PointerPressed="Clicked5"
+                      Name="enterPiece5"
                      />
 
             <Ellipse Fill="White"
@@ -131,20 +136,22 @@
                       Stroke="Black"
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
-                     PointerPressed="Clicked"
+                     PointerPressed="Clicked6"
+                      Name="enterPiece6"
                      />
             <Ellipse Fill="White"
                      Grid.Column="13"
                       Stroke="Black"
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
-                     PointerPressed="Clicked"
+                     PointerPressed="Clicked7"
+                      Name="enterPiece7"
                      />
             <!--Row 1-->
             <Ellipse Fill="White"
                      Grid.Column="1"
                      Grid.Row="2"
-                     Name="C2R2"
+                     Name="C1R2"
                      />
 
             <Ellipse Fill="White"
