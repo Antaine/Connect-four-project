@@ -12,10 +12,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Shapes;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace MyApp
+namespace connect4
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,6 +26,21 @@ namespace MyApp
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+
+        private void MouseEnter(object sender, Windows.Devices.Input.MouseEventArgs e)
+        {
+            // ... Change Ellipse to a blue color.
+            var ellipse = sender as Ellipse;
+            ellipse.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
+        }
+
+        private void Ellipse_MouseLeave(object sender, Windows.Devices.Input.MouseEventArgs e)
+        {
+            // ... Change Ellipse to a red color.
+            var ellipse = sender as Ellipse;
+            ellipse.Fill = new SolidColorBrush(Windows.UI.Colors.White); ;
         }
     }
 }
