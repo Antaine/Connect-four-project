@@ -50,25 +50,11 @@ namespace connect4
         }
 
         public void checkWin()
-        {
-            if (turnCount % 2 == 0)
             {
-                if (P11 == 2 &&P12 ==2 && P13 == 2 && P14 == 2 || P12 ==2 && P13==2 &&P14==2 &&P15==2|| P13 == 2 && P14 == 2 && P15 == 2 && P16 ==2|| P14 == 2 && P15 == 2 && P16 == 2 && P17==2)
-                {
-                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
-                }
-                
-            }
+            checkHorizontal();
+            checkVertical();
 
-            else if(turnCount % 2 != 0)
-            {
-                if (P11 == 1 && P12 == 1 && P13 == 1 && P14 == 1 || P12 == 1 && P13 == 1 && P14 == 1 && P15 == 1 || P13 == 1 && P14 == 1 && P15 == 1 && P16 == 1 || P14 == 1 && P15 == 1 && P16 == 1 && P17 == 1)
-                {
-                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
-                }
-            }
 
-               
             }
 
 
@@ -274,7 +260,7 @@ namespace connect4
                 else
                 {
                     C3R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
-                    P22 = 2;
+                    P22 = 1;
                 }
             }
 
@@ -842,6 +828,157 @@ namespace connect4
             checkWin();
             turnCount++;
             generateLogicBoard();
+        }
+
+        public void checkHorizontal()
+        {
+            if (turnCount % 2 == 0)
+            {
+                if (P21 == 2 && P22 == 2 && P13 == 2 && P14 == 2 || P12 == 2 && P13 == 2 && P14 == 2 && P15 == 2 || P13 == 2 && P14 == 2 && P15 == 2 && P16 == 2 || P14 == 2 && P15 == 2 && P16 == 2 && P17 == 2)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+                else if (P21 == 2 && P22 == 2 && P23 == 2 && P24 == 2 || P22 == 2 && P23 == 2 && P24 == 2 && P25 == 2 || P23 == 2 && P24 == 2 && P25 == 2 && P26 == 2 || P24 == 2 && P25 == 2 && P26 == 2 && P27 == 2)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                }
+
+                else if (P31 == 2 && P32 == 2 && P33 == 2 && P34 == 2 || P32 == 2 && P33 == 2 && P34 == 2 && P35 == 2 || P33 == 2 && P34 == 2 && P35 == 2 && P36 == 2 || P34 == 2 && P35 == 2 && P36 == 2 && P37 == 2)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                }
+
+                else if (P41 == 2 && P42 == 2 && P43 == 2 && P44 == 2 || P42 == 2 && P43 == 2 && P44 == 2 && P45 == 2 || P43 == 2 && P44 == 2 && P45 == 2 && P46 == 2 || P44 == 2 && P45 == 2 && P46 == 2 && P47 == 2)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Pink);
+                }
+
+                else if (P51 == 2 && P52 == 2 && P53 == 2 && P54 == 2 || P52 == 2 && P53 == 2 && P54 == 2 && P55 == 2 || P53 == 2 && P54 == 2 && P55 == 2 && P56 == 2 || P54 == 2 && P55 == 2 && P56 == 2 && P57 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+                else if (P61 == 2 && P62 == 2 && P63 == 2 && P64 == 2 || P62 == 2 && P63 == 2 && P64 == 2 && P65 == 2 || P63 == 2 && P64 == 2 && P65 == 2 && P66 == 2 || P64 == 2 && P65 == 2 && P66 == 2 && P67 == 2)
+                {
+                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+            }
+
+            else if (turnCount % 2 != 0)
+            {
+                if (P11 == 1 && P12 == 1 && P13 == 1 && P14 == 1 || P12 == 1 && P13 == 1 && P14 == 1 && P15 == 1 || P13 == 1 && P14 == 1 && P15 == 1 && P16 == 1 || P14 == 1 && P15 == 1 && P16 == 1 && P17 == 1)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                }
+
+                else if (P21 == 1 && P22 == 1 && P23 == 1 && P24 == 1 || P22 == 1 && P23 == 1 && P24 == 1 && P25 == 1 || P23 == 1 && P24 == 1 && P25 == 1 && P26 == 1 || P24 == 1 && P25 == 1 && P26 == 1 && P27 == 1)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                }
+
+                else if (P31 == 1 && P32 == 1 && P33 == 1 && P34 == 1 || P32 == 1 && P33 == 1 && P34 == 1 && P35 == 1 || P33 == 1 && P34 == 1 && P35 == 1 && P36 == 1 || P34 == 1 && P35 == 1 && P31 == 1 && P37 == 1)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.YellowGreen);
+                }
+
+                else if (P41 == 1 && P42 == 1 && P43 == 1 && P44 == 1 || P42 == 1 && P43 == 1 && P44 == 1 && P45 == 1 || P43 == 1 && P44 == 1 && P45 == 1 && P46 == 1 || P44 == 1 && P45 == 1 && P46 == 1 && P47 == 1)
+                {
+                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gray);
+                }
+
+                else if (P51 == 1 && P52 == 1 && P53 == 1 && P54 == 1 || P52 == 1 && P53 == 1 && P54 == 1 && P55 == 1 || P53 == 1 && P54 == 1 && P55 == 1 && P56 == 1 || P54 == 1 && P55 == 1 && P56 == 1 && P57 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+                else if (P61 == 1 && P62 == 1 && P63 == 1 && P64 == 1 || P62 == 1 && P63 == 1 && P64 == 1 && P65 == 1 || P63 == 1 && P64 == 1 && P65 == 1 && P66 == 1 || P64 == 1 && P65 == 1 && P66 == 1 && P67 == 1)
+                {
+                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+            }
+
+            
+        }
+        public void checkVertical()
+        {
+            if (turnCount % 2 == 0)
+            {
+                if (P11 == 2 && P21 == 2 && P31 == 2 && P41 == 2 || P21 == 2 && P31 == 2 && P41 == 2 && P51 == 2 || P31 == 2 && P41 == 2 && P51 == 2 && P61 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                }
+
+                else if (P12 == 2 && P22 == 2 && P32 == 2 && P42 == 2 || P22 == 2 && P32 == 2 && P42 == 2 && P52 == 2 || P32 == 2 && P42 == 2 && P52 == 2 && P62 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                }
+
+                else if (P13 == 2 && P23 == 2 && P33 == 2 && P43 == 2 || P23 == 2 && P33 == 2 && P43 == 2 && P53 == 2 || P33 == 2 && P43 == 2 && P53 == 2 && P63 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+                else if (P14 == 2 && P24 == 2 && P34 == 2 && P44 == 2 || P24 == 2 && P34 == 2 && P44 == 2 && P54 == 2 || P34 == 2 && P44 == 2 && P54 == 2 && P64 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                }
+
+                else if (P15 == 2 && P25 == 2 && P35 == 2 && P45 == 2 || P25 == 2 && P35 == 2 && P45 == 2 && P55 == 2 || P35 == 2 && P45 == 2 && P55 == 2 && P65 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                }
+
+                else if (P16 == 2 && P26 == 2 && P36 == 2 && P46 == 2 || P26 == 2 && P36 == 2 && P46 == 2 && P56 == 2 || P36 == 2 && P46 == 2 && P56 == 2 && P66 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                }
+
+                else if (P17 == 2 && P27 == 2 && P37 == 2 && P47 == 2 || P27 == 2 && P37 == 2 && P47 == 2 && P57 == 2 || P37 == 2 && P47 == 2 && P57 == 2 && P67 == 2)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                }
+
+            }
+
+            else if (turnCount % 2 != 0)
+            {
+                if (P11 == 1 && P21 == 1 && P31 == 1 && P41 == 1 || P21 == 1 && P31 == 1 && P41 == 1 && P51 == 1 || P31 == 1 && P41 == 1 && P51 == 1 && P61 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                }
+
+                else if (P12 == 1 && P22 == 1 && P32 == 1 && P42 == 1 || P22 == 1 && P32 == 1 && P42 == 1 && P52 == 1 || P32 == 1 && P42 == 1 && P52 == 1 && P62 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                }
+
+                else if (P13 == 1 && P23 == 1 && P33 == 1 && P43 == 1 || P23 == 1 && P33 == 1 && P43 == 1 && P53 == 1 || P33 == 1 && P43 == 1 && P53 == 1 && P63 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+
+                else if (P14 == 1 && P24 == 1 && P34 == 1 && P44 == 1 || P24 == 1 && P34 == 1 && P44 == 1 && P54 == 1 || P34 == 1 && P44 == 1 && P54 == 1 && P64 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                }
+
+                else if (P15 == 1 && P25 == 1 && P35 == 1 && P45 == 1 || P25 == 1 && P35 == 1 && P45 == 1 && P55 == 1 || P35 == 1 && P45 == 1 && P55 == 1 && P65 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                }
+
+                else if (P16 == 1 && P26 == 1 && P36 == 1 && P46 == 1 || P26 == 1 && P36 == 1 && P46 == 1 && P56 == 1 || P36 == 1 && P46 == 1 && P56 == 1 && P66 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                }
+
+                else if (P17 == 1 && P27 == 1 && P37 == 1 && P47 == 1 || P27 == 1 && P37 == 1 && P47 == 1 && P57 == 1 || P37 == 1 && P47 == 1 && P57 == 1 && P67 == 1)
+                {
+                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                }
+            }
         }
 
 
