@@ -26,7 +26,85 @@ namespace connect4
         int turnCount = 1;
         int collNo=0;
         int rowNo1=-0,rowNo2 = 0,rowNo3 = 0,rowNo4 = 0, rowNo5 = 0, rowNo6 = 0,rowNo7 =0;
+        int [,][,] board;
+        int P11=   0,   P21=-7,  P31=-14, P41=-21, P51=-28, P61=-35;
+        int P12=  -1,   P22=-8,  P32=-15, P42=-22, P52=-29, P62=-36;
+        int P13=  -2,   P23=-9,  P33=-16, P43=-23, P53=-30, P63=-37;
+        int P14=  -3,   P24=-10, P34=-17, P44=-24, P54=-31, P64=-38;
+        int P15=  -4,   P25=-11, P35=-18, P45=-25, P55=-32, P65=-39;
+        int P16=  -5,   P26=-12, P36=-19, P46=-26, P56=-33, P66=-40;
+        int P17= - 6,   P27=-13, P37=-20, P47=-27, P57=-34, P67=-41;
         Ellipse piece;
+        int colCount = 0;
+        int start= 0;
+
+        public void generateLogicBoard()
+        {
+            int[,] board = new int[6, 7] { 
+                {P11,P12,P13,P14,P15,P16,P17},
+                {P21,P22,P23,P24,P25,P26,P27},
+                {P31,P32,P33,P34,P35,P36,P37},
+                {P41,P42,P43,P44,P45,P46,P47},
+                {P51,P52,P53,P54,P55,P56,P57},
+                {P61,P62,P63,P64,P65,P66,P67} };
+        }
+
+        public void checkWin()
+        {
+            if (turnCount % 2 == 0)
+            {
+                if (P11 == 2 &&P12 ==2 && P13 == 2 && P14 == 2 || P12 ==2 && P13==2 &&P14==2 &&P15==2|| P13 == 2 && P14 == 2 && P15 == 2 && P16 ==2|| P14 == 2 && P15 == 2 && P16 == 2 && P17==2)
+                {
+                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                }
+                
+            }
+
+            else if(turnCount % 2 != 0)
+            {
+                if (P11 == 1 && P12 == 1 && P13 == 1 && P14 == 1 || P12 == 1 && P13 == 1 && P14 == 1 && P15 == 1 || P13 == 1 && P14 == 1 && P15 == 1 && P16 == 1 || P14 == 1 && P15 == 1 && P16 == 1 && P17 == 1)
+                {
+                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                }
+            }
+
+               
+            }
+
+
+        public void checkC1()
+        {
+            colCount++;
+            if(colCount == 1)
+            {
+                
+            }
+
+            else if (colCount == 2)
+            {
+
+            }
+
+            else if (colCount == 3)
+            {
+
+            }
+
+            else if (colCount == 4)
+            {
+
+            }
+
+            else if (colCount == 5)
+            {
+
+            }
+
+            else if (colCount == 6)
+            {
+
+            }
+        }
         public MainPage()
         {
             this.InitializeComponent();
@@ -35,6 +113,7 @@ namespace connect4
         private void PointrIn(object sender, PointerRoutedEventArgs e)
         {
             var ellipse = sender as Ellipse;
+            //start++;
             if (turnCount % 2 == 0)
             {
                 ellipse.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
@@ -66,11 +145,16 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P11 = 2;
+                    //board[1, 1] = 2;
                 }
                 else
                 {
                     C1R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P11 = 1;
                 }
+
+
             }
 
            else if (rowNo1 == 4)
@@ -78,11 +162,14 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P21 = 2;
                 }
                 else
                 {
                     C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P21 = 1;
                 }
+
             }
 
            else if (rowNo1 == 6)
@@ -90,11 +177,14 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P31 = 2;
                 }
                 else
                 {
                     C1R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P31 = 1;
                 }
+
             }
 
             else if (rowNo1 == 8)
@@ -102,11 +192,14 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P41 = 2;
                 }
                 else
                 {
                     C1R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P41 = 1;
                 }
+
             }
 
             else if (rowNo1 == 10)
@@ -114,11 +207,14 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P51 = 2;
                 }
                 else
                 {
                     C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P51 = 1;
                 }
+    
             }
 
             else if (rowNo1 == 12)
@@ -126,11 +222,14 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P61 = 2;
                 }
                 else
                 {
                     C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P61 = 1;
                 }
+
             }
 
             else
@@ -140,6 +239,8 @@ namespace connect4
                 turnCount--;
             }
 
+            generateLogicBoard();
+            checkWin();
             turnCount++;
 
         }
@@ -154,10 +255,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C3R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P12 = 2;
                 }
                 else
                 {
                     C3R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P12 = 1;
                 }
             }
 
@@ -166,10 +269,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C3R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P22 = 2;
                 }
                 else
                 {
                     C3R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P22 = 2;
                 }
             }
 
@@ -178,22 +283,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C3R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P32 = 2;
                 }
                 else
                 {
                     C3R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P32 = 1;
                 }
             }
-
+        
             else if (rowNo2 == 8)
             {
                 if (turnCount % 2 == 0)
                 {
                     C3R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P42 = 2;
                 }
                 else
                 {
                     C3R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P42 = 1;
                 }
             }
 
@@ -202,10 +311,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C3R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P52 = 2;
                 }
                 else
                 {
                     C3R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P52 = 1;
                 }
             }
 
@@ -214,20 +325,25 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C3R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P62 = 2;
                 }
                 else
                 {
                     C3R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P62 = 1;
                 }
             }
-
+             
             else
             {
                 enterPiece2.StrokeThickness = 0;
                 enterPiece2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
+            
         }
 
         private void Clicked3(object sender, PointerRoutedEventArgs e)
@@ -239,22 +355,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C5R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P13 = 2;
                 }
                 else
                 {
                     C5R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P13 = 1;
                 }
             }
-
+          
             else if (rowNo3 == 4)
             {
                 if (turnCount % 2 == 0)
                 {
                     C5R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P23 = 2;
                 }
                 else
                 {
                     C5R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P23 = 1;
                 }
             }
 
@@ -263,22 +383,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C5R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P33 = 2;
                 }
                 else
                 {
                     C5R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P33 = 1;
                 }
             }
-
+          
             else if (rowNo3 == 8)
             {
                 if (turnCount % 2 == 0)
                 {
                     C5R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P43 = 2;
                 }
                 else
                 {
                     C5R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P43 = 1;
                 }
             }
 
@@ -287,22 +411,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C5R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P53 = 2;
                 }
                 else
                 {
                     C5R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P53 = 1;
                 }
             }
-
+              
             else if (rowNo3 == 12)
             {
                 if (turnCount % 2 == 0)
                 {
                     C5R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P63 = 2;
                 }
                 else
                 {
                     C5R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P63 = 1;
                 }
             }
 
@@ -312,7 +440,10 @@ namespace connect4
                 enterPiece3.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
+           
         }
 
         private void Clicked4(object sender, PointerRoutedEventArgs e)
@@ -324,22 +455,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C7R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P14 = 2;
                 }
                 else
                 {
                     C7R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P14 = 1;
                 }
             }
-
+         
             else if (rowNo4 == 4)
             {
                 if (turnCount % 2 == 0)
                 {
                     C7R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P24 = 2;
                 }
                 else
                 {
                     C7R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P24 = 1;
                 }
             }
 
@@ -348,10 +483,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C7R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P34 = 2;
                 }
                 else
                 {
                     C7R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P34 = 1;
                 }
             }
 
@@ -360,10 +497,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C7R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P44 = 2;
                 }
                 else
                 {
                     C7R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P44 = 1;
                 }
             }
 
@@ -372,22 +511,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C7R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P54 = 2;
                 }
                 else
                 {
                     C7R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P54 = 1;
                 }
             }
-
+               
             else if (rowNo4 == 12)
             {
                 if (turnCount % 2 == 0)
                 {
                     C7R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P64 = 2;
                 }
                 else
                 {
                     C7R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P64 = 1;
                 }
             }
 
@@ -397,7 +540,9 @@ namespace connect4
                 enterPiece4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
         }
 
         private void Clicked5(object sender, PointerRoutedEventArgs e)
@@ -409,10 +554,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C9R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P15 = 2;
                 }
                 else
                 {
                     C9R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P15 = 1;
                 }
             }
 
@@ -421,22 +568,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C9R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P25 = 2;
                 }
                 else
                 {
                     C9R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P25 = 1;
                 }
             }
-
+             
             else if (rowNo5 == 6)
             {
                 if (turnCount % 2 == 0)
                 {
                     C9R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P35 = 2;
                 }
                 else
                 {
                     C9R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P35 = 1;
                 }
             }
 
@@ -445,22 +596,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C9R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P45 = 2;
                 }
                 else
                 {
                     C9R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P45 = 1;
                 }
             }
-
+            
             else if (rowNo5 == 10)
             {
                 if (turnCount % 2 == 0)
                 {
                     C9R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P55 = 2;
                 }
                 else
                 {
                     C9R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P55 = 1;
                 }
             }
 
@@ -469,10 +624,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C9R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P65 = 2;
                 }
                 else
                 {
                     C9R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P65 = 1;
                 }
             }
 
@@ -482,7 +639,9 @@ namespace connect4
                 enterPiece5.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
         }
 
         private void Clicked6(object sender, PointerRoutedEventArgs e)
@@ -494,10 +653,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C11R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P16 = 2;
                 }
                 else
                 {
                     C11R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P16 = 1;
                 }
             }
 
@@ -506,22 +667,27 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C11R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P26 = 2;
+
                 }
                 else
                 {
                     C11R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P26 = 1;
                 }
             }
-
+            
             else if (rowNo6 == 6)
             {
                 if (turnCount % 2 == 0)
                 {
                     C11R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P36 = 2;
                 }
                 else
                 {
                     C11R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P36 = 1;
                 }
             }
 
@@ -530,10 +696,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C11R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P46 = 2;
                 }
                 else
                 {
                     C11R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P46 = 1;
                 }
             }
 
@@ -542,22 +710,27 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C11R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P56 = 2;
+
                 }
                 else
                 {
                     C11R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P56 = 1;
                 }
             }
-
+           
             else if (rowNo6 == 12)
             {
                 if (turnCount % 2 == 0)
                 {
                     C11R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P66 = 2;
                 }
                 else
                 {
                     C11R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P66 = 1;
                 }
             }
 
@@ -567,7 +740,9 @@ namespace connect4
                 enterPiece6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
         }
 
         private void Clicked7(object sender, PointerRoutedEventArgs e)
@@ -579,10 +754,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C13R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P17 = 2;
                 }
                 else
                 {
                     C13R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P17 = 1;
                 }
             }
 
@@ -591,22 +768,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C13R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P27 = 2;
                 }
                 else
                 {
                     C13R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P27 = 1;
                 }
             }
-
+           
             else if (rowNo7 == 6)
             {
                 if (turnCount % 2 == 0)
                 {
                     C13R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P37 = 2;
                 }
                 else
                 {
                     C13R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P37 = 1;
                 }
             }
 
@@ -615,10 +796,12 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C13R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P47 = 2;
                 }
                 else
                 {
                     C13R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P47 = 1;
                 }
             }
 
@@ -627,22 +810,26 @@ namespace connect4
                 if (turnCount % 2 == 0)
                 {
                     C13R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P57 = 2;
                 }
                 else
                 {
                     C13R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P57 = 1;
                 }
             }
-
+            
             else if (rowNo7 == 12)
             {
                 if (turnCount % 2 == 0)
                 {
                     C13R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
+                    P67 = 2;
                 }
                 else
                 {
                     C13R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
+                    P67 = 1;
                 }
             }
 
@@ -652,7 +839,9 @@ namespace connect4
                 enterPiece7.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
+            checkWin();
             turnCount++;
+            generateLogicBoard();
         }
 
 
