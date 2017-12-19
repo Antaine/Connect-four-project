@@ -7,8 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- Antaine O Conghaile (G00347577)-->
     <Grid x:Name="parentGrid">
         <Grid x:Name="Board"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <!-- Define board rows-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="0.5*"/>
@@ -27,6 +29,7 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
+            <!-- Define board colllums-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="2*" />
@@ -86,7 +89,8 @@
                 Grid.Row="1" Grid.RowSpan="12" Grid.Column="14"/>
             <!-- End of colls-->
 
-
+            <!-- Add clickable Ellipses to the top-->
+            <!-- Where the user clicks to enter there pieces-->
             <Ellipse Fill="White"
                      Grid.Column="1"
                      Stroke="Black"
@@ -149,6 +153,8 @@
                       Name="enterPiece7"
                      />
             <!--Row 1-->
+            <!-- Add ellipses that will change colour to represent the pieces-->
+            <!-- Assign Name -->
             <Ellipse Fill="White"
                      Grid.Column="1"
                      Grid.Row="2"
@@ -381,18 +387,23 @@
                      Grid.Row="12"
                      Name="C13R12"
                      />
+
+            <!-- Shows winning player-->
             <StackPanel Name="winScreen" Grid.Column="5" Grid.ColumnSpan="5" Grid.Row="14" Background="LightGray" Height="60">
                 <TextBlock Name="test5"></TextBlock>
             </StackPanel>
 
+            <!-- button to restart-->
             <StackPanel Name="button" Grid.Column="11" Grid.Row="14" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray">
                 <Button Height="50" Click="Button_Click">Restart</Button>
             </StackPanel>
 
+            <!-- Show player 1 and colour-->
             <StackPanel Name="Player1" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" Background="Red" Height="50">
                 <TextBlock Name="test1" Text="Player 1" FontSize="35" TextAlignment="Left"/>
             </StackPanel>
 
+            <!-- Show player 2 and colour-->
             <StackPanel Name="Player2" Grid.Column="12" Grid.Row="14" Grid.ColumnSpan="2" Background="Yellow" Height="50">
                 <TextBlock Name="test2" Text="Player 2" FontSize="35" TextAlignment="Left"></TextBlock>
             </StackPanel>

@@ -17,12 +17,13 @@ using Windows.UI.Xaml.Shapes;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace connect4
-{
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+{//Class
+    // Antaine O Conghaile (G00347577)
+
     public sealed partial class MainPage : Page
-    {
+    {//main
+
+        //Variables
         int turnCount = 1;
         int collNo = 0;
         int rowNo1 = -0, rowNo2 = 0, rowNo3 = 0, rowNo4 = 0, rowNo5 = 0, rowNo6 = 0, rowNo7 = 0;
@@ -35,12 +36,10 @@ namespace connect4
         int P16 = -5, P26 = -12, P36 = -19, P46 = -26, P56 = -33, P66 = -40;
         int P17 = -6, P27 = -13, P37 = -20, P47 = -27, P57 = -34, P67 = -41;
         Ellipse piece;
-        int colCount = 0;
-        int start = 0;
         Boolean win = false;
         String winningPlayer;
 
-        public void generateLogicBoard()
+     /*   public void generateLogicBoard()
         {
             int[,] board = new int[6, 7] {
                 {P11,P12,P13,P14,P15,P16,P17},
@@ -49,13 +48,15 @@ namespace connect4
                 {P41,P42,P43,P44,P45,P46,P47},
                 {P51,P52,P53,P54,P55,P56,P57},
                 {P61,P62,P63,P64,P65,P66,P67} };
-        }
+        }*/
 
+        //Check for 4 in a row
         public void checkWin()
         {
             checkHorizontal();
             checkVertical();
             checkDiagonal();
+            //if 4 in a row show winner
             if (win == true && turnCount % 2 == 0)
             {
                 winningPlayer = "Player 2";
@@ -74,32 +75,34 @@ namespace connect4
             this.InitializeComponent();
         }
 
+        //mouse pointer enter piece show what colour (Who's turn)
         private void PointrIn(object sender, PointerRoutedEventArgs e)
         {
             var ellipse = sender as Ellipse;
-            //start++;
+            //player2
             if (turnCount % 2 == 0)
             {
                 ellipse.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
             }
+            //player1
             else
             {
                 ellipse.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
             }
         }
 
+        //Mouse pointer exit change back to white
         private void PointrOut(object sender, PointerRoutedEventArgs e)
         {
             var ellipse = sender as Ellipse;
             ellipse.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
         }
 
-        private void Clicked(object sender, PointerRoutedEventArgs e)
-        {
-            turnCount++;
-
-        }
-
+        //Click piece to add a chip to a collum
+        //Add 2 to row num in order to keep track of the what row each collum has reached
+        //if 2 goes into turn number its player 2s go
+        //else it will be player 1s
+        //give a value to the position 1 for player1 and  2 for player 2
         private void Clicked1(object sender, PointerRoutedEventArgs e)
         {
             collNo = 1;
@@ -195,6 +198,7 @@ namespace connect4
 
             }
 
+            //stay white and decrement counter
             else
             {
                 enterPiece1.StrokeThickness = 0;
@@ -202,11 +206,12 @@ namespace connect4
                 turnCount--;
             }
 
-            generateLogicBoard();
+            //Check for win
             checkWin();
             turnCount++;
 
         }
+        //Repeat for clicks 2-7 for the other colums
 
         private void Clicked2(object sender, PointerRoutedEventArgs e)
         {
@@ -305,7 +310,6 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
 
         }
 
@@ -405,7 +409,6 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
 
         }
 
@@ -505,7 +508,6 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
         }
 
         private void Clicked5(object sender, PointerRoutedEventArgs e)
@@ -604,7 +606,6 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
         }
 
         private void Clicked6(object sender, PointerRoutedEventArgs e)
@@ -705,7 +706,6 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
         }
 
         private void Clicked7(object sender, PointerRoutedEventArgs e)
@@ -804,11 +804,14 @@ namespace connect4
             }
             checkWin();
             turnCount++;
-            generateLogicBoard();
         }
 
+        //Check horizontally for 4 in a row
+        //if the adjacent 4 pieces horizontally have the same value 1 0r 2 win = true;
+        //uses win in check win method
         public void checkHorizontal()
         {
+            //Check for player2
             if (turnCount % 2 == 0)
             {
                 if (P21 == 2 && P22 == 2 && P13 == 2 && P14 == 2 || P12 == 2 && P13 == 2 && P14 == 2 && P15 == 2 || P13 == 2 && P14 == 2 && P15 == 2 && P16 == 2 || P14 == 2 && P15 == 2 && P16 == 2 && P17 == 2)
@@ -843,6 +846,7 @@ namespace connect4
 
             }
 
+            //Repeat for player1
             else if (turnCount % 2 != 0)
             {
                 if (P11 == 1 && P12 == 1 && P13 == 1 && P14 == 1 || P12 == 1 && P13 == 1 && P14 == 1 && P15 == 1 || P13 == 1 && P14 == 1 && P15 == 1 && P16 == 1 || P14 == 1 && P15 == 1 && P16 == 1 && P17 == 1)
@@ -878,8 +882,12 @@ namespace connect4
 
 
         }
+        //Check Vertically for 4 in a row
+        //if the adjacent 4 pieces horizontally have the same value 1 0r 2 win = true;
+        //uses win in check win method
         public void checkVertical()
         {
+            //Player2
             if (turnCount % 2 == 0)
             {
                 if (P11 == 2 && P21 == 2 && P31 == 2 && P41 == 2 || P21 == 2 && P31 == 2 && P41 == 2 && P51 == 2 || P31 == 2 && P41 == 2 && P51 == 2 && P61 == 2)
@@ -919,6 +927,7 @@ namespace connect4
 
             }
 
+            //Player1
             else if (turnCount % 2 != 0)
             {
                 if (P11 == 1 && P21 == 1 && P31 == 1 && P41 == 1 || P21 == 1 && P31 == 1 && P41 == 1 && P51 == 1 || P31 == 1 && P41 == 1 && P51 == 1 && P61 == 1)
@@ -957,8 +966,13 @@ namespace connect4
                 }
             }
         }
+
+        //Check Diagonally for 4 in a row
+        //if the adjacent 4 pieces horizontally have the same value 1 0r 2 win = true;
+        //uses win in check win method
         public void checkDiagonal()
         {
+            //player2
             #region Check diagonally to the right
             if (turnCount % 2 == 0)
             {
@@ -983,6 +997,8 @@ namespace connect4
                 }
                 #endregion Check diagonally to the right
 
+                //Check to the left
+
                 else if (P14 == 2 && P23 == 2 && P32 == 2 && P41 == 2 || P24 == 2 && P33 == 2 && P42 == 2 && P51 == 2 || P34 == 2 && P43 == 2 && P52 == 2 && P61 == 2)
                 {
                     win = true;
@@ -1005,6 +1021,7 @@ namespace connect4
 
             }
 
+            //player 1
             else if (turnCount % 2 != 0)
             {
                 #region Check diagonally to the right
@@ -1051,6 +1068,7 @@ namespace connect4
             }
         }
 
+        //Show winner
         public void winningScreen()
         {
            test5.FontSize = 45;
@@ -1058,14 +1076,17 @@ namespace connect4
          
         }
 
+        //Reset winner
        public void restartScreen()
         {
             test5.Text=String.Empty;
         }
 
 
+        //Clean board and reset variables
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //reset board values
             P11 = 0; P21 = -7; P31 = -14; P41 = -21; P51 = -28; P61 = -35;
             P12 = -1; P22 = -8; P32 = -15; P42 = -22; P52 = -29; P62 = -36;
             P13 = -2; P23 = -9; P33 = -16; P43 = -23; P53 = -30; P63 = -37;
@@ -1073,6 +1094,8 @@ namespace connect4
             P15 = -4; P25 = -11; P35 = -18; P45 = -25; P55 = -32; P65 = -39;
             P16 = -5; P26 = -12; P36 = -19; P46 = -26; P56 = -33; P66 = -40;
             P17 = -6; P27 = -13; P37 = -20; P47 = -27; P57 = -34; P67 = -41;
+
+            //Reset colour to white
             //Row 1
             C1R2.Fill = enterPiece1.Fill;
             C3R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
@@ -1122,6 +1145,7 @@ namespace connect4
             C11R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
             C13R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
 
+            //reset variables
             winningPlayer = " ";
 
             turnCount = 1;
@@ -1132,7 +1156,6 @@ namespace connect4
             rowNo5 = 0;
             rowNo6 = 0;
             rowNo7 = 0;
-            start = 0;
             win = false;
             restartScreen();
             
