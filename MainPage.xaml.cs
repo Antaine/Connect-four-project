@@ -24,23 +24,25 @@ namespace connect4
     public sealed partial class MainPage : Page
     {
         int turnCount = 1;
-        int collNo=0;
-        int rowNo1=-0,rowNo2 = 0,rowNo3 = 0,rowNo4 = 0, rowNo5 = 0, rowNo6 = 0,rowNo7 =0;
-        int [,][,] board;
-        int P11=   0,   P21=-7,  P31=-14, P41=-21, P51=-28, P61=-35;
-        int P12=  -1,   P22=-8,  P32=-15, P42=-22, P52=-29, P62=-36;
-        int P13=  -2,   P23=-9,  P33=-16, P43=-23, P53=-30, P63=-37;
-        int P14=  -3,   P24=-10, P34=-17, P44=-24, P54=-31, P64=-38;
-        int P15=  -4,   P25=-11, P35=-18, P45=-25, P55=-32, P65=-39;
-        int P16=  -5,   P26=-12, P36=-19, P46=-26, P56=-33, P66=-40;
-        int P17= - 6,   P27=-13, P37=-20, P47=-27, P57=-34, P67=-41;
+        int collNo = 0;
+        int rowNo1 = -0, rowNo2 = 0, rowNo3 = 0, rowNo4 = 0, rowNo5 = 0, rowNo6 = 0, rowNo7 = 0;
+        int[,][,] board;
+        int P11 = 0, P21 = -7, P31 = -14, P41 = -21, P51 = -28, P61 = -35;
+        int P12 = -1, P22 = -8, P32 = -15, P42 = -22, P52 = -29, P62 = -36;
+        int P13 = -2, P23 = -9, P33 = -16, P43 = -23, P53 = -30, P63 = -37;
+        int P14 = -3, P24 = -10, P34 = -17, P44 = -24, P54 = -31, P64 = -38;
+        int P15 = -4, P25 = -11, P35 = -18, P45 = -25, P55 = -32, P65 = -39;
+        int P16 = -5, P26 = -12, P36 = -19, P46 = -26, P56 = -33, P66 = -40;
+        int P17 = -6, P27 = -13, P37 = -20, P47 = -27, P57 = -34, P67 = -41;
         Ellipse piece;
         int colCount = 0;
-        int start= 0;
+        int start = 0;
+        Boolean win = false;
+        String winningPlayer;
 
         public void generateLogicBoard()
         {
-            int[,] board = new int[6, 7] { 
+            int[,] board = new int[6, 7] {
                 {P11,P12,P13,P14,P15,P16,P17},
                 {P21,P22,P23,P24,P25,P26,P27},
                 {P31,P32,P33,P34,P35,P36,P37},
@@ -50,46 +52,23 @@ namespace connect4
         }
 
         public void checkWin()
-            {
-                checkHorizontal();
-                checkVertical();
-            checkDiagonal();
-            }
-
-
-        public void checkC1()
         {
-            colCount++;
-            if(colCount == 1)
+            checkHorizontal();
+            checkVertical();
+            checkDiagonal();
+            if (win == true && turnCount % 2 == 0)
             {
-                
+                winningPlayer = "Player 2";
+                winningScreen();
             }
 
-            else if (colCount == 2)
+            else if (win == true && turnCount % 2 != 0)
             {
-
-            }
-
-            else if (colCount == 3)
-            {
-
-            }
-
-            else if (colCount == 4)
-            {
-
-            }
-
-            else if (colCount == 5)
-            {
-
-            }
-
-            else if (colCount == 6)
-            {
-
+                winningPlayer = "Player 1";
+                winningScreen();
             }
         }
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -118,20 +97,19 @@ namespace connect4
         private void Clicked(object sender, PointerRoutedEventArgs e)
         {
             turnCount++;
-            
+
         }
 
         private void Clicked1(object sender, PointerRoutedEventArgs e)
         {
             collNo = 1;
             rowNo1 = rowNo1 + 2;
-            if(rowNo1 == 2)
+            if (rowNo1 == 2)
             {
                 if (turnCount % 2 == 0)
                 {
                     C1R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.Yellow);
                     P11 = 2;
-                    //board[1, 1] = 2;
                 }
                 else
                 {
@@ -142,7 +120,7 @@ namespace connect4
 
             }
 
-           else if (rowNo1 == 4)
+            else if (rowNo1 == 4)
             {
                 if (turnCount % 2 == 0)
                 {
@@ -157,7 +135,7 @@ namespace connect4
 
             }
 
-           else if (rowNo1 == 6)
+            else if (rowNo1 == 6)
             {
                 if (turnCount % 2 == 0)
                 {
@@ -199,7 +177,7 @@ namespace connect4
                     C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Red);
                     P51 = 1;
                 }
-    
+
             }
 
             else if (rowNo1 == 12)
@@ -220,7 +198,7 @@ namespace connect4
             else
             {
                 enterPiece1.StrokeThickness = 0;
-                enterPiece1.Fill = new SolidColorBrush(color: Windows.UI.Colors.White) ;
+                enterPiece1.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
                 turnCount--;
             }
 
@@ -276,7 +254,7 @@ namespace connect4
                     P32 = 1;
                 }
             }
-        
+
             else if (rowNo2 == 8)
             {
                 if (turnCount % 2 == 0)
@@ -318,7 +296,7 @@ namespace connect4
                     P62 = 1;
                 }
             }
-             
+
             else
             {
                 enterPiece2.StrokeThickness = 0;
@@ -328,7 +306,7 @@ namespace connect4
             checkWin();
             turnCount++;
             generateLogicBoard();
-            
+
         }
 
         private void Clicked3(object sender, PointerRoutedEventArgs e)
@@ -348,7 +326,7 @@ namespace connect4
                     P13 = 1;
                 }
             }
-          
+
             else if (rowNo3 == 4)
             {
                 if (turnCount % 2 == 0)
@@ -376,7 +354,7 @@ namespace connect4
                     P33 = 1;
                 }
             }
-          
+
             else if (rowNo3 == 8)
             {
                 if (turnCount % 2 == 0)
@@ -404,7 +382,7 @@ namespace connect4
                     P53 = 1;
                 }
             }
-              
+
             else if (rowNo3 == 12)
             {
                 if (turnCount % 2 == 0)
@@ -428,7 +406,7 @@ namespace connect4
             checkWin();
             turnCount++;
             generateLogicBoard();
-           
+
         }
 
         private void Clicked4(object sender, PointerRoutedEventArgs e)
@@ -448,7 +426,7 @@ namespace connect4
                     P14 = 1;
                 }
             }
-         
+
             else if (rowNo4 == 4)
             {
                 if (turnCount % 2 == 0)
@@ -504,7 +482,7 @@ namespace connect4
                     P54 = 1;
                 }
             }
-               
+
             else if (rowNo4 == 12)
             {
                 if (turnCount % 2 == 0)
@@ -561,7 +539,7 @@ namespace connect4
                     P25 = 1;
                 }
             }
-             
+
             else if (rowNo5 == 6)
             {
                 if (turnCount % 2 == 0)
@@ -589,7 +567,7 @@ namespace connect4
                     P45 = 1;
                 }
             }
-            
+
             else if (rowNo5 == 10)
             {
                 if (turnCount % 2 == 0)
@@ -661,7 +639,7 @@ namespace connect4
                     P26 = 1;
                 }
             }
-            
+
             else if (rowNo6 == 6)
             {
                 if (turnCount % 2 == 0)
@@ -704,7 +682,7 @@ namespace connect4
                     P56 = 1;
                 }
             }
-           
+
             else if (rowNo6 == 12)
             {
                 if (turnCount % 2 == 0)
@@ -761,7 +739,7 @@ namespace connect4
                     P27 = 1;
                 }
             }
-           
+
             else if (rowNo7 == 6)
             {
                 if (turnCount % 2 == 0)
@@ -803,7 +781,7 @@ namespace connect4
                     P57 = 1;
                 }
             }
-            
+
             else if (rowNo7 == 12)
             {
                 if (turnCount % 2 == 0)
@@ -835,32 +813,32 @@ namespace connect4
             {
                 if (P21 == 2 && P22 == 2 && P13 == 2 && P14 == 2 || P12 == 2 && P13 == 2 && P14 == 2 && P15 == 2 || P13 == 2 && P14 == 2 && P15 == 2 && P16 == 2 || P14 == 2 && P15 == 2 && P16 == 2 && P17 == 2)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P21 == 2 && P22 == 2 && P23 == 2 && P24 == 2 || P22 == 2 && P23 == 2 && P24 == 2 && P25 == 2 || P23 == 2 && P24 == 2 && P25 == 2 && P26 == 2 || P24 == 2 && P25 == 2 && P26 == 2 && P27 == 2)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                    win = true;
                 }
 
                 else if (P31 == 2 && P32 == 2 && P33 == 2 && P34 == 2 || P32 == 2 && P33 == 2 && P34 == 2 && P35 == 2 || P33 == 2 && P34 == 2 && P35 == 2 && P36 == 2 || P34 == 2 && P35 == 2 && P36 == 2 && P37 == 2)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P41 == 2 && P42 == 2 && P43 == 2 && P44 == 2 || P42 == 2 && P43 == 2 && P44 == 2 && P45 == 2 || P43 == 2 && P44 == 2 && P45 == 2 && P46 == 2 || P44 == 2 && P45 == 2 && P46 == 2 && P47 == 2)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Pink);
+                    win = true;
                 }
 
                 else if (P51 == 2 && P52 == 2 && P53 == 2 && P54 == 2 || P52 == 2 && P53 == 2 && P54 == 2 && P55 == 2 || P53 == 2 && P54 == 2 && P55 == 2 && P56 == 2 || P54 == 2 && P55 == 2 && P56 == 2 && P57 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P61 == 2 && P62 == 2 && P63 == 2 && P64 == 2 || P62 == 2 && P63 == 2 && P64 == 2 && P65 == 2 || P63 == 2 && P64 == 2 && P65 == 2 && P66 == 2 || P64 == 2 && P65 == 2 && P66 == 2 && P67 == 2)
                 {
-                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
             }
@@ -869,36 +847,36 @@ namespace connect4
             {
                 if (P11 == 1 && P12 == 1 && P13 == 1 && P14 == 1 || P12 == 1 && P13 == 1 && P14 == 1 && P15 == 1 || P13 == 1 && P14 == 1 && P15 == 1 && P16 == 1 || P14 == 1 && P15 == 1 && P16 == 1 && P17 == 1)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                    win = true;
                 }
 
                 else if (P21 == 1 && P22 == 1 && P23 == 1 && P24 == 1 || P22 == 1 && P23 == 1 && P24 == 1 && P25 == 1 || P23 == 1 && P24 == 1 && P25 == 1 && P26 == 1 || P24 == 1 && P25 == 1 && P26 == 1 && P27 == 1)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P31 == 1 && P32 == 1 && P33 == 1 && P34 == 1 || P32 == 1 && P33 == 1 && P34 == 1 && P35 == 1 || P33 == 1 && P34 == 1 && P35 == 1 && P36 == 1 || P34 == 1 && P35 == 1 && P31 == 1 && P37 == 1)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.YellowGreen);
+                    win = true;
                 }
 
                 else if (P41 == 1 && P42 == 1 && P43 == 1 && P44 == 1 || P42 == 1 && P43 == 1 && P44 == 1 && P45 == 1 || P43 == 1 && P44 == 1 && P45 == 1 && P46 == 1 || P44 == 1 && P45 == 1 && P46 == 1 && P47 == 1)
                 {
-                    C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gray);
+                    win = true;
                 }
 
                 else if (P51 == 1 && P52 == 1 && P53 == 1 && P54 == 1 || P52 == 1 && P53 == 1 && P54 == 1 && P55 == 1 || P53 == 1 && P54 == 1 && P55 == 1 && P56 == 1 || P54 == 1 && P55 == 1 && P56 == 1 && P57 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P61 == 1 && P62 == 1 && P63 == 1 && P64 == 1 || P62 == 1 && P63 == 1 && P64 == 1 && P65 == 1 || P63 == 1 && P64 == 1 && P65 == 1 && P66 == 1 || P64 == 1 && P65 == 1 && P66 == 1 && P67 == 1)
                 {
-                    C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
             }
 
-            
+
         }
         public void checkVertical()
         {
@@ -906,37 +884,37 @@ namespace connect4
             {
                 if (P11 == 2 && P21 == 2 && P31 == 2 && P41 == 2 || P21 == 2 && P31 == 2 && P41 == 2 && P51 == 2 || P31 == 2 && P41 == 2 && P51 == 2 && P61 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P12 == 2 && P22 == 2 && P32 == 2 && P42 == 2 || P22 == 2 && P32 == 2 && P42 == 2 && P52 == 2 || P32 == 2 && P42 == 2 && P52 == 2 && P62 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P13 == 2 && P23 == 2 && P33 == 2 && P43 == 2 || P23 == 2 && P33 == 2 && P43 == 2 && P53 == 2 || P33 == 2 && P43 == 2 && P53 == 2 && P63 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P14 == 2 && P24 == 2 && P34 == 2 && P44 == 2 || P24 == 2 && P34 == 2 && P44 == 2 && P54 == 2 || P34 == 2 && P44 == 2 && P54 == 2 && P64 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                    win = true;
                 }
 
                 else if (P15 == 2 && P25 == 2 && P35 == 2 && P45 == 2 || P25 == 2 && P35 == 2 && P45 == 2 && P55 == 2 || P35 == 2 && P45 == 2 && P55 == 2 && P65 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                    win = true;
                 }
 
                 else if (P16 == 2 && P26 == 2 && P36 == 2 && P46 == 2 || P26 == 2 && P36 == 2 && P46 == 2 && P56 == 2 || P36 == 2 && P46 == 2 && P56 == 2 && P66 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P17 == 2 && P27 == 2 && P37 == 2 && P47 == 2 || P27 == 2 && P37 == 2 && P47 == 2 && P57 == 2 || P37 == 2 && P47 == 2 && P57 == 2 && P67 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                    win = true;
                 }
 
             }
@@ -945,37 +923,37 @@ namespace connect4
             {
                 if (P11 == 1 && P21 == 1 && P31 == 1 && P41 == 1 || P21 == 1 && P31 == 1 && P41 == 1 && P51 == 1 || P31 == 1 && P41 == 1 && P51 == 1 && P61 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P12 == 1 && P22 == 1 && P32 == 1 && P42 == 1 || P22 == 1 && P32 == 1 && P42 == 1 && P52 == 1 || P32 == 1 && P42 == 1 && P52 == 1 && P62 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P13 == 1 && P23 == 1 && P33 == 1 && P43 == 1 || P23 == 1 && P33 == 1 && P43 == 1 && P53 == 1 || P33 == 1 && P43 == 1 && P53 == 1 && P63 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P14 == 1 && P24 == 1 && P34 == 1 && P44 == 1 || P24 == 1 && P34 == 1 && P44 == 1 && P54 == 1 || P34 == 1 && P44 == 1 && P54 == 1 && P64 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                    win = true;
                 }
 
                 else if (P15 == 1 && P25 == 1 && P35 == 1 && P45 == 1 || P25 == 1 && P35 == 1 && P45 == 1 && P55 == 1 || P35 == 1 && P45 == 1 && P55 == 1 && P65 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                    win = true;
                 }
 
                 else if (P16 == 1 && P26 == 1 && P36 == 1 && P46 == 1 || P26 == 1 && P36 == 1 && P46 == 1 && P56 == 1 || P36 == 1 && P46 == 1 && P56 == 1 && P66 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P17 == 1 && P27 == 1 && P37 == 1 && P47 == 1 || P27 == 1 && P37 == 1 && P47 == 1 && P57 == 1 || P37 == 1 && P47 == 1 && P57 == 1 && P67 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                    win = true;
                 }
             }
         }
@@ -986,91 +964,180 @@ namespace connect4
             {
                 if (P11 == 2 && P22 == 2 && P33 == 2 && P44 == 2 || P21 == 2 && P32 == 2 && P43 == 2 && P54 == 2 || P31 == 2 && P42 == 2 && P53 == 2 && P64 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P12 == 2 && P23 == 2 && P34 == 2 && P45 == 2 || P22 == 2 && P33 == 2 && P44 == 2 && P55 == 2 || P32 == 2 && P43 == 2 && P54 == 2 && P65 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P13 == 2 && P24 == 2 && P35 == 2 && P46 == 2 || P23 == 2 && P34 == 2 && P45 == 2 && P56 == 2 || P33 == 2 && P44 == 2 && P55 == 2 && P66 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P14 == 2 && P25 == 2 && P36 == 2 && P47 == 2 || P24 == 2 && P35 == 2 && P46 == 2 && P57 == 2 || P34 == 2 && P45 == 2 && P56 == 2 && P67 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                    win = true;
                 }
                 #endregion Check diagonally to the right
 
                 else if (P14 == 2 && P23 == 2 && P32 == 2 && P41 == 2 || P24 == 2 && P33 == 2 && P42 == 2 && P51 == 2 || P34 == 2 && P43 == 2 && P52 == 2 && P61 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P15 == 2 && P24 == 2 && P33 == 2 && P42 == 2 || P25 == 2 && P34 == 2 && P43 == 2 && P52 == 2 || P35 == 2 && P44 == 2 && P53 == 2 && P62 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                    win = true;
                 }
 
                 else if (P16 == 2 && P25 == 2 && P34 == 2 && P43 == 2 || P26 == 2 && P35 == 2 && P44 == 2 && P53 == 2 || P36 == 2 && P45 == 2 && P54 == 2 && P63 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                    win = true;
                 }
 
                 else if (P17 == 2 && P26 == 2 && P35 == 2 && P44 == 2 || P27 == 2 && P36 == 2 && P45 == 2 && P54 == 2 || P37 == 2 && P46 == 2 && P55 == 2 && P64 == 2)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
             }
 
             else if (turnCount % 2 != 0)
             {
-#region Check diagonally to the right
+                #region Check diagonally to the right
                 if (P11 == 1 && P22 == 1 && P33 == 1 && P44 == 1 || P21 == 1 && P32 == 1 && P43 == 1 && P54 == 1 || P31 == 1 && P42 == 1 && P53 == 1 && P64 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Purple);
+                    win = true;
                 }
 
                 else if (P12 == 1 && P23 == 1 && P34 == 1 && P45 == 1 || P22 == 1 && P33 == 1 && P44 == 1 && P55 == 1 || P32 == 1 && P43 == 1 && P54 == 1 && P65 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P13 == 1 && P24 == 1 && P35 == 1 && P46 == 1 || P23 == 1 && P34 == 1 && P45 == 1 && P56 == 1 || P33 == 1 && P44 == 1 && P55 == 1 && P66 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
 
                 else if (P14 == 1 && P25 == 1 && P36 == 1 && P47 == 1 || P24 == 1 && P35 == 1 && P46 == 1 && P57 == 1 || P34 == 1 && P45 == 1 && P56 == 1 && P67 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Blue);
+                    win = true;
                 }
                 #endregion Check diagonally to the right
 
                 else if (P14 == 1 && P23 == 1 && P32 == 1 && P41 == 1 || P24 == 1 && P33 == 1 && P42 == 1 && P51 == 1 || P34 == 1 && P43 == 1 && P52 == 1 && P61 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Green);
+                    win = true;
                 }
 
                 else if (P15 == 1 && P24 == 1 && P33 == 1 && P42 == 1 || P25 == 1 && P34 == 1 && P43 == 1 && P52 == 1 || P35 == 1 && P44 == 1 && P53 == 1 && P62 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Orange);
+                    win = true;
                 }
 
                 else if (P16 == 1 && P25 == 1 && P34 == 1 && P43 == 1 || P26 == 1 && P35 == 1 && P44 == 1 && P53 == 1 || P36 == 1 && P45 == 1 && P54 == 1 && P63 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Gold);
+                    win = true;
                 }
 
                 else if (P17 == 1 && P26 == 1 && P35 == 1 && P44 == 1 || P27 == 1 && P36 == 1 && P45 == 1 && P54 == 1 || P37 == 1 && P46 == 1 && P55 == 1 && P64 == 1)
                 {
-                    C1R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.Black);
+                    win = true;
                 }
             }
         }
+
+        public void winningScreen()
+        {
+           test5.FontSize = 45;
+           test5.Text = "Winner is " + winningPlayer;
+         
+        }
+
+       public void restartScreen()
+        {
+            test5.Text=String.Empty;
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            P11 = 0; P21 = -7; P31 = -14; P41 = -21; P51 = -28; P61 = -35;
+            P12 = -1; P22 = -8; P32 = -15; P42 = -22; P52 = -29; P62 = -36;
+            P13 = -2; P23 = -9; P33 = -16; P43 = -23; P53 = -30; P63 = -37;
+            P14 = -3; P24 = -10; P34 = -17; P44 = -24; P54 = -31; P64 = -38;
+            P15 = -4; P25 = -11; P35 = -18; P45 = -25; P55 = -32; P65 = -39;
+            P16 = -5; P26 = -12; P36 = -19; P46 = -26; P56 = -33; P66 = -40;
+            P17 = -6; P27 = -13; P37 = -20; P47 = -27; P57 = -34; P67 = -41;
+            //Row 1
+            C1R2.Fill = enterPiece1.Fill;
+            C3R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R2.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            //Row2
+            C1R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C3R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R4.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            //Row3
+            C1R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C3R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R6.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            //Row4
+            C1R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C3R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R8.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            //Row5
+            C1R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C3R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R10.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            //Row 6
+            C1R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C3R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C5R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C7R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C9R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C11R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+            C13R12.Fill = new SolidColorBrush(color: Windows.UI.Colors.White);
+
+            winningPlayer = " ";
+
+            turnCount = 1;
+            rowNo1 = -0;
+            rowNo2 = 0;
+            rowNo3 = 0;
+            rowNo4 = 0;
+            rowNo5 = 0;
+            rowNo6 = 0;
+            rowNo7 = 0;
+            start = 0;
+            win = false;
+            restartScreen();
+            
+        }
     }
 }
+
+

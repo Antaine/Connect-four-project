@@ -6,10 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid x:Name="parentGrid">
         <Grid x:Name="Board"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="0.5*"/>
@@ -45,8 +46,8 @@
 
             </Grid.ColumnDefinitions>
 
-            <Border Background="White"
-                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="15"/>
+            <Border Background="DarkBlue"
+                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="16"/>
             <!-- Adding blue rows -->
             <Border Background="DarkBlue"
                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="14"/>
@@ -88,7 +89,7 @@
 
             <Ellipse Fill="White"
                      Grid.Column="1"
-                      Stroke="Black"
+                     Stroke="Black"
                      StrokeThickness="1"
                      PointerEntered="PointrIn" PointerExited="PointrOut"
                      PointerPressed="Clicked1"
@@ -380,7 +381,23 @@
                      Grid.Row="12"
                      Name="C13R12"
                      />
+            <StackPanel Name="winScreen" Grid.Column="5" Grid.ColumnSpan="5" Grid.Row="14" Background="LightGray" Height="60">
+                <TextBlock Name="test5"></TextBlock>
+            </StackPanel>
 
-        </Grid><!--Board grid -->
+            <StackPanel Name="button" Grid.Column="11" Grid.Row="14" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray">
+                <Button Height="50" Click="Button_Click">Restart</Button>
+            </StackPanel>
+
+            <StackPanel Name="Player1" Grid.Column="1" Grid.Row="14" Grid.ColumnSpan="2" Background="Red" Height="50">
+                <TextBlock Name="test1" Text="Player 1" FontSize="35" TextAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel Name="Player2" Grid.Column="12" Grid.Row="14" Grid.ColumnSpan="2" Background="Yellow" Height="50">
+                <TextBlock Name="test2" Text="Player 2" FontSize="35" TextAlignment="Left"></TextBlock>
+            </StackPanel>
+
+        </Grid>
+        <!--Board grid -->
     </Grid>
 </Page>
